@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>韓文學習App - Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: #ffffff;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Navigation (consistent across site) */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+      z-index: 1000;
+      padding: 18px 0;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #c084fc;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+    .nav-links a {
+      color: #4b2e5a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #c084fc;
+    }
+
+    /* Hero / Header */
+    header {
+      padding: 160px 0 100px;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff5f0 0%, #ffffff 100%);
+    }
+    h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: #c084fc;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 1.9rem;
+      color: #6b21a8;
+      margin-bottom: 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Main Content */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #4b2e5a;
+      margin-bottom: 50px;
+    }
+
+    /* Resource Cards */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+    .resource-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+    .resource-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(192,132,252,0.15);
+    }
+    .resource-icon {
+      font-size: 5rem;
+      margin-bottom: 24px;
+      color: #d19fe6;
+    }
+    .resource-card h3 {
+      font-size: 2rem;
+      color: #4b2e5a;
+      margin-bottom: 16px;
+    }
+    .resource-card p {
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .resource-link {
+      display: inline-block;
+      padding: 12px 32px;
+      background: #c084fc;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .resource-link:hover {
+      background: #a855f7;
+      transform: translateY(-3px);
+    }
+
+    /* Contribution Section */
+    .contribution {
+      background: #f9f9fc;
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 100px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .contribution p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: #c084fc;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(192,132,252,0.25);
+    }
+    .cta-btn:hover {
+      background: #a855f7;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(168,85,247,0.35);
+    }
+
+    /* Footer */
+    footer {
+      padding: 80px 0 40px;
+      text-align: center;
+      color: #888;
+      background: #f9f9fc;
+      border-top: 1px solid #eee;
+    }
+    footer .accent {
+      color: #c084fc;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3.2rem; }
+      .subtitle { font-size: 1.5rem; }
+      .nav-links { gap: 24px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">공부하자 💕</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="https://codepen.io/Yammi1119/full/bNwboBE">Vocabulary</a>
+        <a href="resources.html" class="active">Resources</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>學習資源中心</h1>
+      <p class="subtitle">精選影片、播放清單、短片，讓你隨時隨地補充韓文知識 💜 從基礎發音到K-drama實用句，一起變強～</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">精選資源</h2>
+      <div class="resources-grid">
+
+        <div class="resource-card">
+          <div class="resource-icon">🎥</div>
+          <h3>基礎必學短語</h3>
+          <p>Learn 16 Must Know Basic Korean Phrases for Beginners - 禮貌＆隨便形式都有，適合新手、旅行或追劇時用！</p>
+          <a href="https://www.youtube.com/watch?v=iOH4f7r2WUQ" target="_blank" class="resource-link">立即觀看</a>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-icon">📽️</div>
+          <h3>韓文播放清單</h3>
+          <p>專注韓文字母（Hangul）學習：發音技巧、子音母音區分，超適合零基礎開始！</p>
+          <a href="https://www.youtube.com/playlist?list=PLbDJUczzibBltvv1lgXqT3UUoIoYITcUm" target="_blank" class="resource-link">探索播放清單</a>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-icon">📱</div>
+          <h3>韓劇短片精華</h3>
+          <p>從經典韓劇學實用句：「누구세요」（你是誰？）發音＋情境，邊追劇邊記住～</p>
+          <a href="https://www.youtube.com/shorts/7D7LwccP84g" target="_blank" class="resource-link">睇短片</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="contribution">
+    <div class="container">
+      <h2 class="section-title">你也有好資源？</h2>
+      <p>分享你最愛的韓文學習影片、YouTube頻道或TikTok短片！我們會精選放上網站，讓更多香港K-learners受益 💖</p>
+      <a href="#" class="cta-btn">提交你的推薦 →</a>
+    </div>
+  </section>
+
+  <section style="text-align:center; padding: 60px 0;">
+    <div class="container">
+      <h2 class="section-title">準備好繼續前進了嗎？</h2>
+      <a href="https://codepen.io/Yammi1119/full/bNwboBE" class="cta-btn">返回每日單字練習</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>讓資源變成你的韓文翅膀 • <span class="accent">공부하자</span> ♥ • 香港 K-learners • 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

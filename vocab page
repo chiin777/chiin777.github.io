@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>韓文學習App - Vocabulary Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: #ffffff;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Navigation (same as Home) */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+      z-index: 1000;
+      padding: 18px 0;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #c084fc;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+    .nav-links a {
+      color: #4b2e5a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #c084fc;
+    }
+
+    /* Hero / Header */
+    header {
+      padding: 160px 0 100px;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff5f0 0%, #ffffff 100%);
+    }
+    h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: #c084fc;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 1.9rem;
+      color: #6b21a8;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Main Content */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #4b2e5a;
+      margin-bottom: 50px;
+    }
+
+    /* Daily Vocab Lists */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+      margin-bottom: 100px;
+    }
+    .vocab-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+    .vocab-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(192,132,252,0.15);
+    }
+    .category-icon {
+      font-size: 4.5rem;
+      margin-bottom: 24px;
+      color: #d19fe6;
+    }
+    .vocab-card h3 {
+      font-size: 2rem;
+      color: #4b2e5a;
+      margin-bottom: 20px;
+    }
+    .word-list {
+      list-style: none;
+      text-align: left;
+      font-size: 1.15rem;
+    }
+    .word-list li {
+      margin: 12px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .korean {
+      font-weight: 700;
+      color: #c084fc;
+      font-size: 1.3rem;
+    }
+
+    /* Progress Tracker */
+    .progress-container {
+      background: #f9f9fc;
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 100px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .progress-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .stat {
+      font-size: 1.4rem;
+    }
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #c084fc;
+      display: block;
+    }
+    .badge {
+      background: #fff0f5;
+      color: #c084fc;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: #c084fc;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(192,132,252,0.25);
+    }
+    .cta-btn:hover {
+      background: #a855f7;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(168,85,247,0.35);
+    }
+
+    /* Footer (same as Home) */
+    footer {
+      padding: 80px 0 40px;
+      text-align: center;
+      color: #888;
+      background: #f9f9fc;
+      border-top: 1px solid #eee;
+    }
+    footer .accent {
+      color: #c084fc;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3.2rem; }
+      .subtitle { font-size: 1.5rem; }
+      .nav-links { gap: 24px; font-size: 0.95rem; }
+      .progress-stats { gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">공부하자 💕</a>
+      <div class="nav-links">
+        <a href="https://codepen.io/Yammi1119/full/JoRPrRB">Home</a>
+        <a href="#" class="active">Vocabulary</a>
+        <a href="https://codepen.io/Yammi1119/full/jEMNGVV">Resources</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>每日單字 • Vocabulary Builder</h1>
+      <p class="subtitle">可愛又實用！每天5–10個單字，搭配圖片+發音+例句，讓你輕鬆記住韓文 💜 從食物到心情，全部陪你學～</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">今日主題單字</h2>
+      <div class="vocab-grid">
+
+        <div class="vocab-card">
+          <div class="category-icon">🍜</div>
+          <h3>食物 Food</h3>
+          <ul class="word-list">
+            <li><span class="korean">김치</span> - kimchi (泡菜)</li>
+            <li><span class="korean">떡볶이</span> - tteokbokki (辣炒年糕)</li>
+            <li><span class="korean">비빔밥</span> - bibimbap (拌飯)</li>
+            <li><span class="korean">삼겹살</span> - samgyeopsal (五花肉)</li>
+          </ul>
+        </div>
+
+        <div class="vocab-card">
+          <div class="category-icon">✈️</div>
+          <h3>旅行 Travel</h3>
+          <ul class="word-list">
+            <li><span class="korean">여행</span> - yeohaeng (旅行)</li>
+            <li><span class="korean">공항</span> - gonghang (機場)</li>
+            <li><span class="korean">호텔</span> - hotel (酒店)</li>
+            <li><span class="korean">지도</span> - jido (地圖)</li>
+          </ul>
+        </div>
+
+        <div class="vocab-card">
+          <div class="category-icon">😊</div>
+          <h3>情緒 Emotions</h3>
+          <ul class="word-list">
+            <li><span class="korean">행복해</span> - haengbokhae (幸福)</li>
+            <li><span class="korean">사랑해</span> - saranghae (我愛你)</li>
+            <li><span class="korean">피곤해</span> - pigonhae (累了)</li>
+            <li><span class="korean">설레</span> - seolle (心動)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#f9f9fc;">
+    <div class="container">
+      <h2 class="section-title">你的學習進度</h2>
+      <div class="progress-container">
+        <div class="progress-stats">
+          <div class="stat">
+            <span class="stat-number">248</span>
+            個單字已掌握
+          </div>
+          <div class="stat">
+            <span class="stat-number">17</span>
+            天連續學習
+          </div>
+        </div>
+        <div class="badge">🏆 100單字大師徽章</div>
+        <div class="badge" style="margin-left:12px;">🔥 熱血學習者</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">準備好挑戰自己嗎？</h2>
+      <a href="#" class="cta-btn">開始今日單字挑戰 →</a>
+      <p style="margin-top:30px; color:#666; font-size:1.1rem;">
+        完成每日挑戰，解鎖更多可愛貼圖與AI伴侶的甜甜稱讚 💕
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>讓每個單字都變成甜蜜回憶 • <span class="accent">공부하자</span> ♥ • 香港 K-learners • 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>
